@@ -51,10 +51,10 @@ class Faster_RCNN:
     def _build_model(self):
         if self.backbone_name == 'resnet50_fpn':
             weights = FasterRCNN_ResNet50_FPN_Weights.DEFAULT 
-            model = torchvision.models.detection.fasterrcnn_resnet50_fpn(weights=weights)
+            model = torchvision.models.detection.fasterrcnn_resnet50_fpn(weights=weights, trainable_backbone_layers=3)
         elif self.backbone_name == 'resnet50_fpn_v2':
             weights = FasterRCNN_ResNet50_FPN_V2_Weights.DEFAULT 
-            model = torchvision.models.detection.fasterrcnn_resnet50_fpn_v2(weights=weights)
+            model = torchvision.models.detection.fasterrcnn_resnet50_fpn_v2(weights=weights, trainable_backbone_layers=3)
         elif self.backbone_name == 'resnext50_fpn':
             backbone = resnext50_32x4d(weights="DEFAULT" if self.pretrained else None)
 
